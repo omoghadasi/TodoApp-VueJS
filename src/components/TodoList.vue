@@ -37,7 +37,7 @@
         role="tabpanel"
         aria-labelledby="undone-tab"
       >
-        <TodoVue></TodoVue>
+        <TodoVue v-for="item in todos" :todo="item" :key="item.key"></TodoVue>
       </div>
       <div
         class="tab-pane fade"
@@ -54,6 +54,12 @@
 <script>
 import TodoVue from "./Todo.vue";
 export default {
+  props: {
+    todos:{
+      type:Array,
+      required:true
+    }
+  },
   components: {
     TodoVue,
   },

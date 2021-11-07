@@ -1,6 +1,6 @@
 <template>
   <div class="todo d-flex justify-content-between align-items-center mt-1 p-2">
-    <span class="text">text</span>
+    <span class="text">{{ todo.text }}</span>
     <div class="action">
       <div
         class="btn-group btn-group-sm"
@@ -14,3 +14,15 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props:{
+    todo:{
+      type:Object,
+      required:true
+    }
+  }
+}
+
+</script>

@@ -56,7 +56,7 @@ table {
 
 @font-face {
   font-family: 'fira';
-  src: url('assets/fonts/FiraCode-Medium.ttf');
+  src: url('./../fonts/FiraCode-Medium.ttf');
 }
 
 *{

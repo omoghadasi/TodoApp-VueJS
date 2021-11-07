@@ -4,6 +4,27 @@ import FormAddTodoVue from './components/FormAddTodo.vue';
 import TodoListVue from './components/TodoList.vue';
 
 export default{
+    data(){
+      return{
+        todos:[
+          {
+            id:1,
+            done:false,
+            text:'this is todo'
+          },
+          {
+            id:2,
+            done:false,
+            text:'this is todo'
+          },
+          {
+            id:3,
+            done:false,
+            text:'this is todo'
+          },
+        ]
+      }
+    },
   components:{
     'custom-header': HeaderVue,
     'form-todo': FormAddTodoVue,
@@ -18,7 +39,7 @@ export default{
         <custom-header></custom-header>
         <hr />
         <form-todo></form-todo>
-        <todo-list></todo-list>
+        <todo-list :todos="todos"></todo-list>
       </div>
     </div>
 </template>
@@ -27,157 +48,4 @@ export default{
 #app{
   width: 100%;
 }
-
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-@keyframes morph {
-    0%   {border-radius:47% 60% 56% 76%;}
-    25%  {border-radius:56% 76% 47% 60%;}
-    50%  { border-radius:76% 56% 60% 47%;}
-    100% { border-radius:47% 60% 56% 76%;}
-  }
-
-@font-face {
-  font-family: 'fira';
-  src: url('assets/fonts/FiraCode-Medium.ttf');
-}
-
-*{
-    font-family: fira !important;
-}
-
-body{
-    
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.todo-main{
-    background-color: rgba(0, 0, 0, 0);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 100px 0;
-}
-.todo-main__header{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-}
-.todo-main__header img{
-    width: 100px;
-    height:100px;
-    margin-bottom: 10px;
-}
-.todo-main__form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    margin-bottom: 20px;
-}
-.todo-main__form button{
-    margin-left: 10px;
-    z-index: 100;
-}
-.nav-link{
-    color: white;
-}
-
-.todo{
-    border: 1px solid #e9e9e9;
-    background-color: white;
-    border-radius: 7px;
-}
-
-
-.container{
-    background-image: linear-gradient(120deg, #42b883 0%, #35495e 100%);
-    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-    animation: morph 10s linear infinite; 
-    transform-style: preserve-3d;
-    outline: 1px solid transparent;
-    will-change: border-radius;
-  }
-
-  @keyframes morph{
-    0%,100%{
-    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-      transform: translate3d(0,0,0) rotateZ(0.01deg);
-    }
-    34%{
-        border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
-      transform:  translate3d(0,5px,0) rotateZ(0.01deg);
-    }
-    50%{
-      opacity: .89;
-      transform: translate3d(0,0,0) rotateZ(0.01deg);
-    }
-    67%{
-      border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
-      transform: translate3d(0,-3px,0) rotateZ(0.01deg);
-    }
-  }
-  
-  @keyframes fadeIn{
-    100%{
-      transform: scale(1.03);
-      opacity: 0;
-    }}
 </style>
