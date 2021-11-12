@@ -4,7 +4,7 @@
         <custom-header></custom-header>
         <hr />
         <form-todo @add-todo="addTodo"></form-todo>
-        <todo-list :todos="todos"></todo-list>
+        <todo-list :todos="todos" @delete-todo="deleteTodo" @edit-todo="editTodo"></todo-list>
       </div>
     </div>
 </template>
@@ -37,6 +37,19 @@ export default{
         id:Date.now(),
         done:false,
         text
+      })
+    },
+    deleteTodo(key){
+      this.todos=this.todos.filter(item=>item.id!==key)
+    },
+    editTodo({id,text}){
+      this.todos=this.todos.map(item=>{
+        if (item.id===id){
+          return {
+            ...item,text:text
+          }
+        }
+        return item;
       })
     }
   },

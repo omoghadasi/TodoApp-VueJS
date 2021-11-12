@@ -37,7 +37,7 @@
         role="tabpanel"
         aria-labelledby="undone-tab"
       >
-        <TodoVue v-for="(item,index) in todos" :todo="item" :key="index"></TodoVue>
+        <TodoVue v-for="item in todos" :todo="item" :key="item.id" @delete-todo="$emit('delete-todo',$event)" @edit-todo="$emit('edit-todo',$event)"></TodoVue>
       </div>
     </div>
   </div>
@@ -46,6 +46,7 @@
 <script>
 import TodoVue from "./Todo.vue";
 export default {
+  emits:['delete-todo','edit-todo'],
   props: {
     todos:{
       type:Array,
