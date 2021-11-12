@@ -37,15 +37,7 @@
         role="tabpanel"
         aria-labelledby="undone-tab"
       >
-        <TodoVue v-for="item in todos" :todo="item" :key="item.key"></TodoVue>
-      </div>
-      <div
-        class="tab-pane fade"
-        id="done"
-        role="tabpanel"
-        aria-labelledby="done-tab"
-      >
-        <TodoVue></TodoVue>
+        <TodoVue v-for="(item,index) in todos" :todo="item" :key="index"></TodoVue>
       </div>
     </div>
   </div>
@@ -57,7 +49,6 @@ export default {
   props: {
     todos:{
       type:Array,
-      required:true
     }
   },
   components: {
