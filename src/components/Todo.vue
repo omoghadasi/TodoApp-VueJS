@@ -9,9 +9,9 @@
         role="group"
         aria-label="Basic mixed styles example"
       >
-        <button type="button" class="btn btn-success">{{ todo.done?'Undone':'Done' }}</button>
+        <button type="button" class="btn btn-success" @click="doneTodo(todo.id)">{{ todo.done?'Undone':'Done' }}</button>
         <button type="button" class="btn btn-warning" @click="enableEdit">Edit</button>
-        <button type="button" class="btn btn-danger" @click="$emit('delete-todo',todo.id)">Delete</button>
+        <button type="button" class="btn btn-danger" @click="deleteTodo(todo.id)">Delete</button>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
         role="group"
         aria-label="Basic mixed styles example"
       >
-        <button type="button" class="btn btn-warning" @click="editTodo">Edit</button>
+        <button type="button" class="btn btn-warning" @click="editHandler">Edit</button>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  emits:['delete-todo','edit-todo'],
+  inject:['deleteTodo','editTodo','doneTodo'],
   props:{
     todo:{
       type:Object,
@@ -50,9 +50,9 @@ export default {
       this.editMode=true
       this.todoText=this.todo.text
     },
-    editTodo(){
+    editHandler(){
       this.editMode=false
-      this.$emit('edit-todo',{id: this.todo.id,text: this.todoText})
+      this.editTodo({id: this.todo.id,text: this.todoText})
       this.todoText='';
     }
   }
